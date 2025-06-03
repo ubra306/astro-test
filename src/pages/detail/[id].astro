@@ -1,7 +1,7 @@
 ---
 import "../../styles/global.css";
 
-import type { Overview } from "../../types";
+import type { Vehicle } from "../../types.ts";
 
 export const prerender = false;
 
@@ -9,8 +9,8 @@ const { id } = Astro.params;
 const res = await fetch(
   `https://www.dasweltauto.at/api/locales/de_AT/vehicles/${id}/detail`
 );
-const overview = (await res.json()) as Overview;
+const vehicle = (await res.json()) as Vehicle;
 ---
 
  <h1>Welcome</h1>
- <h1>{overview.header}</h1>
+ <h1>{vehicle.overview.header}</h1>

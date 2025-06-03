@@ -1,4 +1,4 @@
-export interface Root {
+export interface Vehicle {
   overview: Overview
   additionalInfo: AdditionalInfo
   dealerDetail: DealerDetail
