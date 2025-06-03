@@ -1,0 +1,15 @@
+---
+import "../../styles/global.css";
+
+import type { Overview } from "../types";
+
+export const prerender = false;
+
+const { id } = Astro.params;
+const res = await fetch(
+  `https://www.dasweltauto.at/api/locales/de_AT/vehicles/${id}/detail`
+);
+const overview = (await res.json()) as Overview;
+---
+
+ <h1>{overview.header}</h1>
