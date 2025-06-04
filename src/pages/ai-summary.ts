@@ -1,6 +1,3 @@
-// Azure OpenAI Chatbot Client in TypeScript
-// This module provides a function to send a chat completion request to Azure OpenAI (GPT-4.1-mini)
-
 import OpenAI from "openai";
 
 import { API_URL } from "astro:env/client";
@@ -9,7 +6,7 @@ import { API_KEY } from "astro:env/server";
 const model = "gpt-4.1-mini";
 const apiKey = API_KEY;
 const apiVersion = "2024-12-01-preview";
-const deployment = "gpt-4.1-mini"
+const deployment = "gpt-4.1-mini";
 
 const openai = new OpenAI({
   apiKey,
