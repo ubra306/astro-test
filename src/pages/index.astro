@@ -17,6 +17,7 @@ const vehicle = (await res.json()) as Vehicle;
       <h1 style="font-size: 3.5rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 1rem; text-shadow: 0 4px 32px #0ea5e9aa;">
         Discover Your <span style="color: #38bdf8;">Next Car</span> Today
       </h1>
+      
       <p style="font-size: 1.5rem; max-width: 600px; text-align: center; margin-bottom: 2.5rem; color: #e0f2fe;">
         Find your dream vehicle with <span style="font-weight: bold; color: #7dd3fc;">Astro Test</span>.<br />
         Fast, modern, and future-ready car listings.
@@ -31,11 +32,20 @@ const vehicle = (await res.json()) as Vehicle;
       </div>
       <div style="width: 100%; max-width: 900px; background: rgba(255,255,255,0.92); border-radius: 2rem; box-shadow: 0 8px 48px #0ea5e933; padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 2rem; align-items: center; border: 1px solid #e0e7ef; backdrop-filter: blur(6px);">
         <div style="display: flex; flex-direction: row; gap: 2rem; align-items: center; width: 100%;">
-          <img
-            src={vehicle?.overview?.imageUrls?.[0] ?? "/assets/astro.svg"}
-            alt={vehicle?.overview?.header ?? "Car"}
-            style="width: 320px; height: 200px; object-fit: cover; border-radius: 1.2rem; box-shadow: 0 2px 24px #0ea5e933; border: 1px solid #e0e7ef; background: #f1f5f9;"
-          />
+          <div style="width: 320px; height: 200px; position: relative; display: flex; align-items: center; justify-content: center;">
+            <button type="button" aria-label="Vorheriges Bild" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: rgba(30,41,59,0.7); border: none; color: #fff; border-radius: 50%; width: 36px; height: 36px; font-size: 1.5rem; cursor: pointer; z-index: 2;" onclick="const s=document.getElementById('sliderIndex');s.value=Math.max(0,parseInt(s.value)-1);document.getElementById('sliderImg').src=window.vehicleImgs[parseInt(s.value)] ?? '/photos/Tuning_Lamborghini_Gallardo.jpg'">&#8592;</button>
+            <img
+              id="sliderImg"
+              src={vehicle?.overview?.imageUrls?.[0] ?? "/photos/Tuning_Lamborghini_Gallardo.jpg"}
+              alt={vehicle?.overview?.header ?? "Car"}
+              style="width: 320px; height: 200px; object-fit: cover; border-radius: 1.2rem; box-shadow: 0 2px 24px #0ea5e933; border: 1px solid #e0e7ef; background: #f1f5f9;"
+            />
+            <button type="button" aria-label="Nächstes Bild" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: rgba(30,41,59,0.7); border: none; color: #fff; border-radius: 50%; width: 36px; height: 36px; font-size: 1.5rem; cursor: pointer; z-index: 2;" onclick="const s=document.getElementById('sliderIndex');s.value=Math.min(window.vehicleImgs.length-1,parseInt(s.value)+1);document.getElementById('sliderImg').src=window.vehicleImgs[parseInt(s.value)] ?? '/photos/Tuning_Lamborghini_Gallardo.jpg'">&#8594;</button>
+            <input type="hidden" id="sliderIndex" value="0" />
+            <script type="text/javascript">
+              window.vehicleImgs = JSON.parse('{JSON.stringify(vehicle?.overview?.imageUrls?.length ? vehicle.overview.imageUrls : ["/photos/Tuning_Lamborghini_Gallardo.jpg"]) }');
+            </script>
+          </div>
           <div style="flex: 1; min-width: 0;">
             <h2 style="font-size: 2rem; font-weight: 800; color: #0f172a; margin-bottom: 0.5rem;">{vehicle.overview.header}</h2>
             <div style="color: #334155; font-size: 1.1rem; margin-bottom: 0.5rem;">{vehicle.overview.subHeader}</div>
