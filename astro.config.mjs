@@ -15,7 +15,7 @@ export default defineConfig({
 
     env: {
     schema: {
-      API_URL: envField.string({ context: "client", access: "public", optional: true }),
+      API_URL: envField.string({ context: "server", access: "public", optional: true }),
       PORT: envField.number({ context: "server", access: "public", default: 4321 }),
       API_KEY: envField.string({ context: "server", access: "secret" }),
     }
