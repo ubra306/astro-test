@@ -142,6 +142,16 @@ const summary = await aiSummary.chatWithAzureOpenAI([
       </div>
     </div>
   </section>
+  <section style="display: flex; justify-content: center; margin-top: 2.5rem;">
+    <div style="width: 100%; max-width: 900px; background: rgba(255,255,255,0.92); border-radius: 2rem; box-shadow: 0 8px 48px #0ea5e933; padding: 2.5rem 2rem; border: 1px solid #e0e7ef; backdrop-filter: blur(6px); display: flex; flex-direction: column; align-items: center;">
+      <h3 style="color: #0f172a; font-size: 1.5rem; font-weight: 800; margin-bottom: 1.2rem; letter-spacing: -1px;">Fahrzeug-Zusammenfassung (AI)</h3>
+      <div style="width: 100%;">
+        <div style="background: #e0f2fe; color: #0f172a; border-radius: 1rem; padding: 1.5rem 1.2rem; font-size: 1.15rem; font-weight: 500; box-shadow: 0 2px 16px #0ea5e922; border: 1px solid #bae6fd; min-height: 80px; line-height: 1.6; text-align: left;">
+          {summary}
+        </div>
+      </div>
+    </div>
+  </section>
   <footer style="text-align: center; margin-top: 2rem; color: #64748b;">
     <small>
       &copy; {new Date().getFullYear()} Astro Test. Crafted with <span
@@ -149,7 +159,6 @@ const summary = await aiSummary.chatWithAzureOpenAI([
       >
     </small>
   </footer>
-<textarea>{summary}</textarea>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap");
     body {
