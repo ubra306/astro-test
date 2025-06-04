@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -11,6 +11,14 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+  },
+
+    env: {
+    schema: {
+      API_URL: envField.string({ context: "client", access: "public", optional: true }),
+      PORT: envField.number({ context: "server", access: "public", default: 4321 }),
+      API_KEY: envField.string({ context: "server", access: "secret" }),
+    }
   },
 
   adapter: netlify(),
