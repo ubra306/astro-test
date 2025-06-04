@@ -13,8 +13,7 @@ var aiSummary = await import("./ai-summary.ts");
 const summary = await aiSummary.chatWithAzureOpenAI([
   {
     role: "user",
-    content: `Fasse die wichtigsten Informationen dieses Fahrzeugs für einen Interessenten in einem Absatz zusammen.
-    Antworte auf Englisch. füge emojis hinzu und teile den text schön in absätze ein. Fahrzeugdaten: ${JSON.stringify(vehicle)}`,
+    content: `Fasse die wichtigsten Informationen dieses Fahrzeugs für einen Interessenten in einem Absatz zusammen. Antworte auf Englisch. füge emojis hinzu und teile den text schön in absätze ein. Fahrzeugdaten: ${JSON.stringify(vehicle)}`,
   },
 ]);
 ---
