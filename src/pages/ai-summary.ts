@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 
-import { API_URL } from "astro:env/client";
+import { API_URL } from "astro:env/server";
 import { API_KEY } from "astro:env/server";
 
 const model = "gpt-4.1-mini";
