@@ -1,6 +1,5 @@
 ---
 import "../../styles/global.css";
-
 import type { Vehicle } from "../../types.ts";
 
 export const prerender = false;
@@ -12,5 +11,51 @@ const res = await fetch(
 const vehicle = (await res.json()) as Vehicle;
 ---
 
- <h1>Welcome</h1>
- <h1>{vehicle.overview.header}</h1>
+<div class="breadcrumb">
+  <a href="/">Zurück</a> / Home / Suche / {vehicle.overview.brand} / {vehicle.overview.model} / {vehicle.overview.header}
+</div>
+
+<div class="detail-container">
+  <div class="main-info">
+    <div class="actions">
+      <button>Merken</button>
+      <button>Vergleichen</button>
+      <button>Drucken</button>
+      <button>Teilen</button>
+    </div>
+  </div>
+  <div class="sidebar">
+    <h2>{vehicle.overview.header}</h2>
+    <div class="subtitle">{vehicle.overview.subHeader}</div>
+    <div class="price">{vehicle.overview.price} €</div>
+    <div class="leasing">
+      Leasing: <b>{vehicle.financeOptions?.leasingRate ?? "-"}</b> <br />
+      Kredit: <b>{vehicle.financeOptions?.creditRate ?? "-"}</b>
+    </div>
+    <a class="phone">{vehicle.dealerDetail.employees[0]?.mobileNumber ?? vehicle.dealerDetail.employees[0]?.telephoneNumber}</a>
+    <button class="reserve" disabled={!vehicle.overview.reservable}>Reservieren</button>
+    <div class="dealer">
+      <b>{vehicle.dealerDetail.employees[0]?.fullname}</b><br />
+    </div>
+  </div>
+</div>
+
+<div class="vehicle-data">
+  <h3>Fahrzeugdaten</h3>
+  <div class="data-grid">
+    <div><b>Farbe</b><br />{vehicle.technicalData.colorText}</div>
+    <div><b>Erstzulassung</b><br />{vehicle.technicalData.initialRegistrationDate}</div>
+    <div><b>Kilometerstand</b><br />{vehicle.technicalData.mileage} km</div>
+    <div><b>Leistung</b><br />{vehicle.technicalData.powerPs} PS / {vehicle.technicalData.powerKw} kW</div>
+    <div><b>Kraftstoffart</b><br />{vehicle.technicalData.fuelText}</div>
+    <div><b>Komb. Kraftstoffverbrauch</b><br />{vehicle.technicalData.combinedConsumption} {vehicle.technicalData.consumptionUnitCode}</div>
+    <div><b>CO₂-Emission</b><br />{vehicle.technicalData.co2Emission} g/km</div>
+    <div><b>Antrieb</b><br />{vehicle.technicalData.driveText}</div>
+    <div><b>Türen</b><br />{vehicle.technicalData.doors}</div>
+    <div><b>Sitze</b><br />{vehicle.technicalData.seats}</div>
+    <div><b>Vorbesitzer</b><br />{vehicle.technicalData.previousOwners}</div>
+    <div><b>Hubraum</b><br />{vehicle.technicalData.motorCapacity} cm³</div>
+    <div><b>Karosserie</b><br />{vehicle.technicalData.bodyText}</div>
+    <div><b>Getriebeart</b><br />{vehicle.technicalData.gearTypeText}</div>
+  </div>
+</div>

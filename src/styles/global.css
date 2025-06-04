@@ -1,1 +1,55 @@
 @import "tailwindcss";
+
+/* Beispielhafte Styles, bitte anpassen */
+.detail-container {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+.main-info {
+  flex: 2;
+}
+.vehicle-image {
+  width: 100%;
+  border-radius: 8px;
+}
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.sidebar {
+  flex: 1;
+  background: #fafafa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px #0001;
+}
+.price {
+  font-size: 2rem;
+  color: #e67e22;
+  margin: 1rem 0;
+}
+.reserve {
+  background: orange;
+  color: #fff;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.vehicle-data {
+  margin-top: 2rem;
+}
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.breadcrumb {
+  color: #888;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
