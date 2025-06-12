@@ -10,12 +10,12 @@ const res = await fetch(
 const vehicle = (await res.json()) as Vehicle;
 
 var aiSummary = await import("./ai-summary.ts");
-const summary = await aiSummary.chatWithAzureOpenAI([
-  {
-    role: "user",
-    content: `Fasse die wichtigsten Informationen dieses Fahrzeugs für einen Interessenten in einem Absatz zusammen. Antworte auf Englisch. füge emojis hinzu und teile den text schön in absätze ein. Fahrzeugdaten: ${JSON.stringify(vehicle)}`,
-  },
-]);
+//const summary = await aiSummary.chatWithAzureOpenAI([
+//  {
+//    role: "user",
+//    content: `Fasse die wichtigsten Informationen dieses Fahrzeugs für einen Interessenten in einem Absatz zusammen.Antworte auf Englisch. füge emojis hinzu und teile den text schön in absätze ein. Fahrzeugdaten: ${JSON.stringify(vehicle)}`,
+//  },
+//]);
 ---
 
 <Layout>
@@ -145,7 +145,6 @@ const summary = await aiSummary.chatWithAzureOpenAI([
       <h3 style="color: #0f172a; font-size: 1.5rem; font-weight: 800; margin-bottom: 1.2rem; letter-spacing: -1px;">Fahrzeug-Zusammenfassung (AI)</h3>
       <div style="width: 100%;">
         <div style="background: #e0f2fe; color: #0f172a; border-radius: 1rem; padding: 1.5rem 1.2rem; font-size: 1.15rem; font-weight: 500; box-shadow: 0 2px 16px #0ea5e922; border: 1px solid #bae6fd; min-height: 80px; line-height: 1.6; text-align: left;">
-          {summary}
         </div>
       </div>
     </div>
